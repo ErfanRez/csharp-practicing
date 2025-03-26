@@ -1,4 +1,4 @@
-﻿namespace Presentation
+﻿namespace Shop.Domain
 {
     public class Class1
     {

@@ -1,4 +1,4 @@
-﻿namespace Domain
+﻿namespace Shop.Infrastructure
 {
     public class Class1
     {
