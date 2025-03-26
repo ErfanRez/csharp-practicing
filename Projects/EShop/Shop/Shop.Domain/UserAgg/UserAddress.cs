@@ -8,7 +8,7 @@ namespace Shop.Domain.UserAgg
     {
         private UserAddress()
         {
-            
+
         }
         public UserAddress(string shire, string city, string postalCode, string postalAddress,
             PhoneNumber phoneNumber, string name, string family, string nationalCode)
@@ -79,7 +79,7 @@ namespace Shop.Domain.UserAgg
             NullOrEmptyDomainDataException.CheckString(nationalCode, nameof(nationalCode));
 
             if (IranianNationalIdChecker.IsValid(nationalCode) == false)
-                throw new InvalidDomainDataException("کدملی نامعتبر است");
+                throw new InvalidDomainDataException("Invalid national code");
         }
     }
 }
