@@ -5,6 +5,12 @@ namespace Shop.Domain.RoleAgg
 {
     public class Role : AggregateRoot
     {
+
+        private Role()
+        {
+
+        }
+
         public Role(string title, List<RolePermission> permissions)
         {
             NullOrEmptyDomainDataException.CheckString(title, nameof(title));
