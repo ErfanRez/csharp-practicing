@@ -24,7 +24,26 @@ public class Order : AggregateRoot
     public OrderDiscount? Discount { get; private set; }
     public OrderAddress? Address { get; private set; }
     public List<OrderItem> Items { get; private set; }
-    public int TotalPrice => Items.Sum(s => s.TotalPrice);
+
+    public ShippingMethod? ShippingMethod { get; set; }
+
+    public int TotalPrice
+    {
+
+        get
+        {
+            var totalPrice = Items.Sum(x => x.TotalPrice);
+            if (ShippingMethod != null)
+            {
+                totalPrice += ShippingMethod.ShippingCost;
+            }
+
+            if (Discount != null)
+                totalPrice -= Discount.DiscountAmount;
+
+            return totalPrice;
+        }
+    }
 
     public DateTime? LastUpdate { get; set; }
 
