@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Common.Domain.Exceptions
+﻿namespace Common.Domain.Exceptions
 {
     public class SlugIsDuplicateException : BaseDomainException
     {
-        public SlugIsDuplicateException() : base("slug تکراری است")
+        public SlugIsDuplicateException() : base("Duplicate slug!")
         {
         }
 
