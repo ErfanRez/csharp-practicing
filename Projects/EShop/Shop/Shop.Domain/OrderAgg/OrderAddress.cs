@@ -26,7 +26,5 @@ namespace Shop.Domain.OrderAgg
         public string Name { get; private set; }
         public string Family { get; private set; }
         public string NationalCode { get; private set; }
-
-        public Order order { get; set; }
     }
 }

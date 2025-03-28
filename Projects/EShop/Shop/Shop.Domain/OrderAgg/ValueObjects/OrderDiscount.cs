@@ -1,16 +1,21 @@
 ﻿using Common.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Shop.Domain.OrderAgg.ValueObjects;
-
-public class OrderDiscount : ValueObject
+namespace Shop.Domain.OrderAgg.ValueObjects
 {
-    public OrderDiscount(string discountTitle, int discountAmount)
+    public class OrderDiscount : ValueObject
     {
-        DiscountTitle = discountTitle;
-        DiscountAmount = discountAmount;
+        public OrderDiscount(string discountTitle, int discountAmount)
+        {
+            DiscountTitle = discountTitle;
+            DiscountAmount = discountAmount;
+        }
+
+        public string DiscountTitle { get; private set; }
+        public int DiscountAmount { get; private set; }
     }
-
-    public string DiscountTitle { get; private set; }
-    public int DiscountAmount { get; private set; }
 }
-

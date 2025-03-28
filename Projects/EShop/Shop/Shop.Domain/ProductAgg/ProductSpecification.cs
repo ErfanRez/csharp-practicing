@@ -9,6 +9,7 @@ namespace Shop.Domain.ProductAgg
         {
             NullOrEmptyDomainDataException.CheckString(key, nameof(key));
             NullOrEmptyDomainDataException.CheckString(value, nameof(value));
+
             Key = key;
             Value = value;
         }
@@ -16,6 +17,5 @@ namespace Shop.Domain.ProductAgg
         public long ProductId { get; internal set; }
         public string Key { get; private set; }
         public string Value { get; private set; }
-
     }
 }

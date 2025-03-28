@@ -2,6 +2,11 @@
 using Common.Domain.Exceptions;
 using Shop.Domain.UserAgg.Enums;
 using Shop.Domain.UserAgg.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Shop.Domain.UserAgg
 {
@@ -129,7 +134,7 @@ namespace Shop.Domain.UserAgg
         {
             var activeTokenCount = Tokens.Count(c => c.RefreshTokenExpireDate > DateTime.Now);
             if (activeTokenCount == 3)
-                throw new InvalidDomainDataException("Using more than 4 devices is not allowed!");
+                throw new InvalidDomainDataException("امکان استفاده از 4 دستگاه همزمان وجود ندارد");
 
             var token = new UserToken(hashJwtToken, hashRefreshToken, tokenExpireDate, refreshTokenExpireDate, device);
             token.UserId = Id;
@@ -150,19 +155,19 @@ namespace Shop.Domain.UserAgg
             NullOrEmptyDomainDataException.CheckString(phoneNumber, nameof(phoneNumber));
 
             if (phoneNumber.Length != 11)
-                throw new InvalidDomainDataException("Invalid phone number");
+                throw new InvalidDomainDataException("شماره موبایل نامعتبر است");
 
             if (!string.IsNullOrWhiteSpace(email))
                 if (email.IsValidEmail() == false)
-                    throw new InvalidDomainDataException(" Invalid email address");
+                    throw new InvalidDomainDataException(" ایمیل  نامعتبر است");
 
             if (phoneNumber != PhoneNumber)
-                if (userDomainService.PhoneNumberExists(phoneNumber))
-                    throw new InvalidDomainDataException("Duplicate phone number");
+                if (userDomainService.PhoneNumberIsExist(phoneNumber))
+                    throw new InvalidDomainDataException("شماره موبایل تکراری است");
 
             if (email != Email)
-                if (userDomainService.EmailExists(email))
-                    throw new InvalidDomainDataException("Duplicate email address");
+                if (userDomainService.IsEmailExist(email))
+                    throw new InvalidDomainDataException("ایمیل تکراری است");
         }
     }
 }

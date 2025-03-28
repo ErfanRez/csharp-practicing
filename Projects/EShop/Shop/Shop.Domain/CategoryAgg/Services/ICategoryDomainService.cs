@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.Domain.UserAgg.Enums
+namespace Shop.Domain.CategoryAgg.Services
 {
-    public enum Gender
+    public interface ICategoryDomainService
     {
-        None,
-        Male,
-        Famele
+        public bool IsSlugExist(string slug);
     }
 }
