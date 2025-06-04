@@ -1,9 +1,10 @@
-﻿using SOLID.OCP;
+﻿using SOLID.LSP;
 
 namespace ConsoleApp;
 
 public class Program
 {
+    static public int Area(Rectangle r) => r.Width * r.Height;
     static void Main(string[] args)
     {
 
@@ -33,26 +34,39 @@ public class Program
 
         // Open for extension but closed for modification:
 
-        Product apple = new Product("Apple", Color.Red, Size.Small);
-        Product shoes = new Product("Shoes", Color.Black, Size.Medium);
-        Product phone = new Product("Phone", Color.Blue, Size.Large);
+        //Product apple = new Product("Apple", Color.Red, Size.Small);
+        //Product shoes = new Product("Shoes", Color.Black, Size.Medium);
+        //Product phone = new Product("Phone", Color.Blue, Size.Large);
 
-        Product[] products = { apple, shoes, phone };
+        //Product[] products = { apple, shoes, phone };
 
-        var filter = new FilterProducts();
+        //var filter = new FilterProducts();
 
-        foreach (var item in filter.Filter(products, new ColorSpecification(Color.Red)))
-        {
-            Console.WriteLine($"{item.name} is red");
-        }
+        //foreach (var item in filter.Filter(products, new ColorSpecification(Color.Red)))
+        //{
+        //    Console.WriteLine($"{item.name} is red");
+        //}
 
-        foreach (var item in filter.Filter(products, new AndSpecification<Product>(
-            new SizeSpecification(Size.Medium),
-            new ColorSpecification(Color.Black))))
-        {
-            Console.WriteLine($"{item.name} is black and medium.");
-        }
+        //foreach (var item in filter.Filter(products, new AndSpecification<Product>(
+        //    new SizeSpecification(Size.Medium),
+        //    new ColorSpecification(Color.Black))))
+        //{
+        //    Console.WriteLine($"{item.name} is black and medium.");
+        //}
 
+        //*******************************************************************************************/
+
+        // Liskov Substitution Principle:
+
+
+        Rectangle rc = new Rectangle(2, 3);
+        Console.WriteLine($"{rc} has area {Area(rc)}");
+
+        // should be able to substitute a base type for a subtype
+        /*Square*/
+        Rectangle sq = new Square();
+        sq.Width = 4;
+        Console.WriteLine($"{sq} has area {Area(sq)}");
 
     }
 }
