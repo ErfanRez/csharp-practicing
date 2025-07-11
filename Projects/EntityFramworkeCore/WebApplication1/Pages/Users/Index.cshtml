@@ -1,0 +1,32 @@
+﻿@page
+@model WebApplication1.Pages.Users.IndexModel
+@{
+}
+<a asp-page="Add" class="btn btn-success">افزودن کاربر</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>نام</th>
+            <th>ایمیل</th>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.FullName</td>
+                <td>@item.Email</td>
+                <td>
+                    <a asp-page="Edit" class="btn btn-info" asp-route-id="@item.Id">Edit</a>
+                    <form method="post">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" onclick="return confirm('آیا از حذف کاربر اطمینان دازید ؟')" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

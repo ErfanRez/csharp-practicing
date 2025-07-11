@@ -1,0 +1,32 @@
+﻿@page
+@model WebApplication1.Pages.Products.IndexModel
+@{
+}
+<a asp-page="Add" class="btn btn-success">افزودن محصول</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>نام</th>
+            <th>توضیحات</th>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.ProductName</td>
+                <td>@item.Description</td>
+                <td>
+                    <a asp-page="Edit" class="btn btn-info" asp-route-id="@item.Id">Edit</a>
+                    <form method="post">
+                        <input type="hidden" name="id" value="@item.Id"/>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

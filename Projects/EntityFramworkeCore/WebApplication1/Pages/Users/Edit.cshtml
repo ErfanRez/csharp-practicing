@@ -1,0 +1,20 @@
+﻿@page "{id}"
+@model WebApplication1.Pages.Users.EditModel
+@{
+}
+<form class="row" method="post">
+    <div class="col-6">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="col-6">
+        <label asp-for="Family"></label>
+        <input asp-for="Family" class="form-control" />
+    </div>
+    <div class="col-12">
+        <label asp-for="Email"></label>
+        <input type="email" asp-for="Email" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
