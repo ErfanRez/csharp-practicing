@@ -1,3 +1,10 @@
+﻿# Custom files
+EnglishData/
+TestResults/
+*.lutignore
+*.lutconfig
+*.github
+
 wwwroot
 
 
