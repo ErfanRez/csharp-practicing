@@ -3,7 +3,7 @@ public class Builder
 {
     public static void Main()
     {
-        var person = Person.Builder()
+        Person person = Person.Builder()
             .Lives()
                 .WithZipCode("1234")
                 .At("Sample Street")
