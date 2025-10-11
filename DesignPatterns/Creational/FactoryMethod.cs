@@ -61,7 +61,7 @@ public class FactoryMethod
         private Dictionary<DocumentType, IDocument> _docs;
         public DocumentFactory(IEnumerable<IDocument> documents)
         {
-            _docs = documents.ToDictionary(d => d.DocumentType, d => d);
+            _docs = documents.ToDictionary(d => d.DocumentType, d => d); // Or documents.ToDictionary(d => d.DocumentType);
         }
         public IDocument CreateDocument(DocumentType docType)
         {
