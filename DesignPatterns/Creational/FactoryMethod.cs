@@ -65,7 +65,7 @@ public class FactoryMethod
         }
         public IDocument CreateDocument(DocumentType docType)
         {
-            if (_docs.TryGetValue(docType, out IDocument doc))
+            if (_docs.TryGetValue(docType, out IDocument? doc))
             {
                 return doc;
             }
