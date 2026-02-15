@@ -1,0 +1,27 @@
+#{id => {'%2F_sms-queue','rabbit@kasra-queue'},
+  machine =>
+      {module,rabbit_fifo,
+          #{name => '%2F_sms-queue',max_length => undefined,
+            max_bytes => undefined,
+            queue_resource => {resource,<<"/">>,queue,<<"sms-queue">>},
+            created => 1771071555431,dead_letter_handler => undefined,
+            become_leader_handler =>
+                {rabbit_quorum_queue,become_leader,
+                    [{resource,<<"/">>,queue,<<"sms-queue">>}]},
+            overflow_strategy => drop_head,delivery_limit => 20,
+            expires => undefined,msg_ttl => undefined,
+            single_active_consumer_on => false}},
+  membership => voter,friendly_name => "queue 'sms-queue' in vhost '/'",
+  cluster_name => '%2F_sms-queue',
+  metrics_labels => #{queue => <<"sms-queue">>,vhost => <<"/">>},
+  uid => <<"2F_SMSX4R93ITWKMJV">>,initial_machine_version => 7,
+  initial_members => [{'%2F_sms-queue','rabbit@kasra-queue'}],
+  log_init_args =>
+      #{max_checkpoints => 3,min_checkpoint_interval => 64,
+        snapshot_interval => 8192,uid => <<"2F_SMSX4R93ITWKMJV">>},
+  metrics_key => {resource,<<"/">>,queue,<<"sms-queue">>},
+  ra_event_formatter =>
+      {rabbit_quorum_queue,format_ra_event,
+          [{resource,<<"/">>,queue,<<"sms-queue">>}]},
+  tick_timeout => 5000,broadcast_time => 100,
+  install_snap_rpc_timeout => 120000,await_condition_timeout => 30000}.

@@ -1,0 +1,3 @@
+VHOST: /
+QUEUE: sms-messages-queue
+INDEX: v2

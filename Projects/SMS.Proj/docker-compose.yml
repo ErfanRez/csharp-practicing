@@ -1,0 +1,34 @@
+services:
+  sms.proj:
+    image: ${DOCKER_REGISTRY-}smsproj
+    container_name: Sms.Proj
+    build:
+      context: .
+      dockerfile: SMS.Proj/Dockerfile
+
+  rabbit.queue:
+    image: rabbitmq:management-alpine
+    container_name: Rabbit.Queue
+    hostname: sms-queue
+    volumes:
+        - ./.containers/queue/data/:/var/lib/rabbitmq
+        - ./.containers/queue/log/:/var/log/rabbitmq
+    environment:
+        RABBITMQ_DEFAULT_USER: guest
+        RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  # mongodb:
+  #   image: mongo:6.0
+  #   container_name: sms-mongodb
+  #   restart: unless-stopped
+  #   ports:
+  #     - "27017:27017"
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: admin
+  #     MONGO_INITDB_ROOT_PASSWORD: password
+  #     MONGO_INITDB_DATABASE: SmsDb
+  #   volumes:
+  #     - mongodb_data:/data/db
