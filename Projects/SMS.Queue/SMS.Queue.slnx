@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+  <Project Path="SMS.API/SMS.API.csproj" />
+  <Project Path="SMS.Common/SMS.Common.csproj" Id="ebecb13e-e527-4a61-af27-f233303cc15a" />
+  <Project Path="SMS.Consumer/SMS.Consumer.csproj" Id="fd2796d5-4f37-48da-8d1b-9b873152c5c1" />
+  <Project Path="SMS.Producer/SMS.Producer.csproj" Id="f2d666f0-6229-48ec-ab30-80fcf4fdb127" />
+</Solution>

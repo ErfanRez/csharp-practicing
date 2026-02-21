@@ -1,0 +1,27 @@
+services:
+  sms.producer:
+    image: ${DOCKER_REGISTRY-}smsproducer
+    build:
+      context: .
+      dockerfile: SMS.Producer/Dockerfile
+
+  rabbit.queue:
+    image: rabbitmq:management-alpine
+    container_name: Rabbit.Queue
+    hostname: rabbit-queue
+    volumes:
+        - ./.containers/queue/data/:/var/lib/rabbitmq
+        - ./.containers/queue/log/:/var/log/rabbitmq
+    environment:
+        RABBITMQ_DEFAULT_USER: guest
+        RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  sms.consumer:
+    image: ${DOCKER_REGISTRY-}smsconsumer
+    build:
+      context: .
+      dockerfile: SMS.Consumer/Dockerfile
+

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SMS.Consumer": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
