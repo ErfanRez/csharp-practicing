@@ -1,12 +1,12 @@
-﻿using Producer.Consumer.OneWayBridge;
-
-namespace Producer.Consumer
+﻿namespace Producer.Consumer
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            BridgeSystem.Main();
+            //OneWayBridge.System.Build();
+
+            CallCenter.System.Build();
         }
     }
 }

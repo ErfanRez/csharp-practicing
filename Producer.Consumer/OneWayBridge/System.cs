@@ -1,8 +1,8 @@
 ﻿namespace Producer.Consumer.OneWayBridge;
 
-public class BridgeSystem
+public class System
 {
-    public static void Main()
+    public static void Build()
     {
         int k = Random.Shared.Next(1, 6);
         int carCount = Random.Shared.Next(5, 51);

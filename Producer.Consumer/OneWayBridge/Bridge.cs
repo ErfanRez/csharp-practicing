@@ -2,16 +2,16 @@
 
 public class Bridge
 {
-    private readonly int k;
+    private readonly int _limit;
     private readonly Queue<Car> _queue = new();
     public readonly SemaphoreSlim BridgeLimit;
     private Direction _direction = Direction.None;
     private readonly object _lock = new();
 
-    public Bridge(int k)
+    public Bridge(int limit)
     {
-        this.k = k;
-        this.BridgeLimit = new(k, k);
+        this._limit = limit;
+        this.BridgeLimit = new(limit, limit);
     }
 
     public void EnqueueCar(Car car)
@@ -31,7 +31,7 @@ public class Bridge
             {
                 lock (_lock)
                 {
-                    if (BridgeLimit.CurrentCount == k)
+                    if (BridgeLimit.CurrentCount == _limit)
                     {
                         _direction = car.Direction;
                         Console.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] Bridge EMPTY. Direction: {_direction}");
@@ -44,7 +44,7 @@ public class Bridge
                         _queue.TryDequeue(out _);
 
                         Console.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] Car {car.Id} from {car.Direction} ENTERS. " +
-                                        $"Permits: {BridgeLimit.CurrentCount}/{k}");
+                                        $"Permits: {BridgeLimit.CurrentCount}/{_limit}");
 
                         Thread crossingThread = new(car.CrossBridge);
 
