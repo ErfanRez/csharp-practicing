@@ -1,5 +1,6 @@
 ﻿namespace Creational;
-public class Prototype
+
+class PrototypeProgram
 {
     public static void Main()
     {

@@ -1,5 +1,6 @@
 ﻿namespace Creational;
-public class Builder
+
+class BuilderProgram
 {
     public static void Main()
     {

@@ -1,5 +1,6 @@
 ﻿namespace Creational;
-public class Singleton
+
+class SingletonProgram
 {
     public static void Main()
     {
