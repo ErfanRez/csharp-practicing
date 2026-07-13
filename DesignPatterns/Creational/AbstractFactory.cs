@@ -1,6 +1,6 @@
 ﻿namespace Creational;
 
-public class AbstractFactory
+class AbstractFactoryProgram
 {
     public static void Main()
     {

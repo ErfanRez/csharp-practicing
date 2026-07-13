@@ -1,5 +1,6 @@
 ﻿namespace Creational;
-public class FactoryMethod
+
+class FactoryMethodProgram
 {
     public static void Main()
     {
